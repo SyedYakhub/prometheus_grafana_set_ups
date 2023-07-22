@@ -13,9 +13,10 @@ helm install prometheus prometheus-community/kube-prometheus-stack
 kubectl patch service prometheus-kube-prometheus-prometheus -p '{"spec": {"type": "NodePort"}}'
 kubectl patch service prometheus-grafana -p '{"spec": {"type": "NodePort"}}'
 kubectl patch service prometheus-kube-prometheus-alertmanager -p '{"spec": {"type": "NodePort"}}'
+kubectl get secret --namespace default prometheus-grafana -o jsonpath="{.data.admin-password}" | base64 --decode
 
 #curl command to validate prometheus
-#curl http://10.108.171.95:9090/metrics
+#curl http://<ClusterIP>:9090/metrics
 
 #Alternatively you can also edit service and change type=NodePort using below command
 #kubectl edit svc prometheus-server
