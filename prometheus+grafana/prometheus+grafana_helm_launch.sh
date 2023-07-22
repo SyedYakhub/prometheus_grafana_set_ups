@@ -11,6 +11,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 helm install prometheus prometheus-community/kube-prometheus-stack
 kubectl patch service prometheus-kube-prometheus-prometheus -p '{"spec": {"type": "NodePort"}}'
+kubectl patch service prometheus-grafana -p '{"spec": {"type": "NodePort"}}'
 
 #Alternatively you can also edit service and change type=NodePort using below command
 #kubectl edit svc prometheus-server
