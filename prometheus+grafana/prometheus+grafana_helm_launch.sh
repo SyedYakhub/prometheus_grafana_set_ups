@@ -6,7 +6,7 @@
 # ./get_helm.sh
 # helm version
 
-#Install prometheus using helm
+#Install prometheus and grafana using helm
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 helm install prometheus prometheus-community/kube-prometheus-stack
